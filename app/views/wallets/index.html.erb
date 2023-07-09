@@ -1,29 +1,27 @@
 <p style="color: green"><%= notice %></p>
+<% if !@wallets.exists? %>
+  <%= form_with(model: @new_wallet, class: "mb-3 form-outline") do |form| %>
+    <%= form.text_field :name, placeholder: t("first_wallet_name"), class: "form-control"  %>
 
-<h1>wallets</h1>
+  <%end %>
+<%end %>
 
 <div id="wallets">
-  <% if current_user %>
-    <h2><%= current_user.email %></h2>
-    <%= image_tag(current_user.avatar_url) %>
-    <%= link_to "Edit Account", edit_user_registration_path %>
-    <%= button_to 'Logout', destroy_user_session_path, data: {turbo: false}, method: :delete %>
-  <% else %>
-    <%= link_to "Login", new_user_session_path %>
-    <%= link_to "Create Account", new_user_registration_path %>
-  <%end %>
-
-
-  <% @wallets.each do |wallet| %>
-    <%= render wallet %>
-    <p>
-      <%= link_to "Show this wallet", wallet %>
-    </p>
-  <% end %>
+  <table class="table table-borderless">
+    <thead>
+      <tr>
+        <th scope="col"><%= t('wallet') %></th>
+        <th scope="col"><%= t('created_at') %></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @wallets.each do |wallet| %>
+        <tr id="<%= dom_id wallet %>">
+          <td scope="row"><%=link_to  wallet.name, wallet, class: "link-opacity-10-hover" %></th>
+          <td><%= wallet.created_at %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 </div>
 
-<%
-=begin%>
- <%= link_to "New wallet", new_wallet_path %>
-<%
-=end%>

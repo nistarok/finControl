@@ -10,7 +10,7 @@ Rails.application.routes.draw do
     resources :accounts
   end
 
-  resources :wallets, only: [:index, :create]
+  resources :wallets, only: [:index, :create, :show]
   resources :variable_incomes
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

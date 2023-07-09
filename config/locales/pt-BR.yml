@@ -32,4 +32,7 @@
 pt-br:
   hello: "Olá %{name}"
   wallets: "Carteiras"
+  wallet: "Carteira"
+  created_at: "Criado em"
+  first_wallet_name: "Cadastre sua carteira"
 

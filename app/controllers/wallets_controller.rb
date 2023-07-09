@@ -1,9 +1,11 @@
 class WalletsController < ApplicationController
   before_action :authenticate_user!
-  # before_action :set_wallet, only: %i[ show edit update destroy ]
+  before_action :set_wallet, only: %i[ show edit update destroy ]
 
   def index
-    @wallets = Wallet.all
+    @new_wallet = Wallet.new
+    @wallets = current_user.wallets
+
   end
 
   def new
@@ -11,11 +13,11 @@ class WalletsController < ApplicationController
   end
 
   def create
-    @wallet = Wallet.new(wallet_params)
+    @wallet = Wallet.new(wallet_params.merge(user_wallets_attributes: [user_id: current_user.id]))
 
     respond_to do |format|
       if @wallet.save
-        format.html { redirect_to wallet_url(@wallet), notice: "Wallet was successfully created." }
+        format.html { redirect_to wallets_url(@wallet), notice: "Wallet was successfully created." }
         format.json { render :show, status: :created, location: @wallet }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -48,7 +50,7 @@ class WalletsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_wallet
-      @wallet = Wallet.find(params[:id])
+      @wallet = current_user.wallets.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.
