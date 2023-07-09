@@ -1,0 +1,2 @@
+class VariableIncome < ApplicationRecord
+end

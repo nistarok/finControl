@@ -1,0 +1,37 @@
+<%= form_with(model: variable_income) do |form| %>
+  <% if variable_income.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(variable_income.errors.count, "error") %> prohibited this variable_income from being saved:</h2>
+
+      <ul>
+        <% variable_income.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :mode, style: "display: block" %>
+    <%= form.text_field :mode %>
+  </div>
+
+  <div>
+    <%= form.label :name, style: "display: block" %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div>
+    <%= form.label :value, style: "display: block" %>
+    <%= form.text_field :value %>
+  </div>
+
+  <div>
+    <%= form.label :trade_date, style: "display: block" %>
+    <%= form.date_field :trade_date %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

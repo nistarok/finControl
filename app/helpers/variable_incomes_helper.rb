@@ -1,0 +1,2 @@
+module VariableIncomesHelper
+end
