@@ -10,21 +10,16 @@
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
   </head>
 
-
-  <%
-=begin%>
- <nav class="navbar navbar-dark bg-dark">
-  <!-- Navbar content -->
-  </nav>
-<%
-=end%>
   <body>
-    <%= render "layouts/navbar" %>
+    <% if current_user %>
+      <%= render "layouts/navbar" %>
+    <% end %>
 
 
 
 
-
-    <%= yield %>
+    <div class="container">
+      <%= yield %>
+    </div>
   </body>
 </html>
