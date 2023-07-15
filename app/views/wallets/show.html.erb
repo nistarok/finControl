@@ -2,17 +2,4 @@
 
 <%= render @wallet %>
 
-<div>
-  <%
-=begin%>
- <%= link_to "Edit this wallet", edit_wallet_path(@wallet) %> |
-<%
-=end%>
-  <%= link_to "Back to wallets", wallets_path %>
-
-  <%
-=begin%>
- <%= button_to "Destroy this wallet", @wallet, method: :delete %>
-<%
-=end%>
-</div>
+  <%= render "accounts" %>

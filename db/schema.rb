@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_09_175848) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_15_181107) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -20,6 +20,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_09_175848) do
     t.string "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "wallet_id"
+    t.index ["wallet_id"], name: "index_bank_accounts_on_wallet_id"
   end
 
   create_table "bank_transitions", force: :cascade do |t|
@@ -80,6 +82,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_09_175848) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "bank_accounts", "wallets"
   add_foreign_key "bank_transitions", "origins"
   add_foreign_key "user_wallets", "users"
   add_foreign_key "user_wallets", "wallets"

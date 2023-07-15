@@ -33,6 +33,14 @@ pt-br:
   hello: "Olá %{name}"
   wallets: "Carteiras"
   wallet: "Carteira"
+  back_wallet: "Voltar para carteira"
   created_at: "Criado em"
   first_wallet_name: "Cadastre sua carteira"
+  new_account:  "Nova conta"
+  account: "Conta"
+  description: "Descrição"
+  name: "Nome"
+  initial_balance: "Saldo inicial"
+  save_account: 'Salvar conta'
+
 

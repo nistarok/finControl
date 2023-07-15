@@ -38,6 +38,10 @@ class WalletsController < ApplicationController
     end
   end
 
+  def show
+    @accounts = @wallet.bank_accounts
+  end
+
   def destroy
     @wallet.destroy
 

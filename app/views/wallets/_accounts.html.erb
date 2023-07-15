@@ -1,0 +1,23 @@
+<% if @accounts.exists? %>
+  <div id="accounts">
+    <table class="table table-borderless">
+      <thead>
+        <tr>
+          <th scope="col"><%= t('account') %></th>
+          <th scope="col"><%= t('description') %></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @accounts.each do |account| %>
+          <tr id="<%= dom_id account %>">
+            <td scope="row"><%=link_to  account.name, account, class: "link-opacity-10-hover" %></th>
+            <td><%= account.description %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+<% end %>
+<div>
+  <%= button_to t('new_account'), new_bank_account_path(), method: :get, params: {wallet_id: @wallet.id}, class: "btn btn-primary" %>
+</div>

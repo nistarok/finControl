@@ -1,5 +1,5 @@
-<%= form_with(model: bank_account) do |form| %>
-  <% if bank_account.errors.any? %>
+<%= simple_form_for bank_account do |f| %>
+<% if bank_account.errors.any? %>
     <div style="color: red">
       <h2><%= pluralize(bank_account.errors.count, "error") %> prohibited this bank_account from being saved:</h2>
 
@@ -9,24 +9,10 @@
         <% end %>
       </ul>
     </div>
-  <% end %>
-
-  <div>
-    <%= form.label :balance, style: "display: block" %>
-    <%= form.text_field :balance %>
-  </div>
-
-  <div>
-    <%= form.label :name, style: "display: block" %>
-    <%= form.text_field :name %>
-  </div>
-
-  <div>
-    <%= form.label :description, style: "display: block" %>
-    <%= form.text_field :description %>
-  </div>
-
-  <div>
-    <%= form.submit %>
-  </div>
+<% end %>
+  <%= f.association :wallet, label: t('wallet'), collection: @wallets, selected: (@wallet.id rescue nil) %>
+  <%= f.input :name, label: t('name') %>
+  <%= f.input :balance, label: t('initial_balance') %>
+  <%= f.input :description, label: t('description'), as: :text %>
+  <%= f.button :submit, t('save_account'), class: 'btn-primary' %>
 <% end %>

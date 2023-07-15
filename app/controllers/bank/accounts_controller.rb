@@ -1,6 +1,6 @@
 class Bank::AccountsController < ApplicationController
   before_action :set_bank_account, only: %i[ show edit update destroy ]
-
+  before_action :set_wallets, only: %i[new edit]
   # GET /bank/accounts or /bank/accounts.json
   def index
     @bank_accounts = Bank::Account.all
@@ -28,6 +28,7 @@ class Bank::AccountsController < ApplicationController
         format.html { redirect_to bank_account_url(@bank_account), notice: "Account was successfully created." }
         format.json { render :show, status: :created, location: @bank_account }
       else
+        @wallet = current_user.wallets.find(bank_account_params[:wallet_id])
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @bank_account.errors, status: :unprocessable_entity }
       end
@@ -63,8 +64,13 @@ class Bank::AccountsController < ApplicationController
       @bank_account = Bank::Account.find(params[:id])
     end
 
+    def set_wallets
+      @wallet = current_user.wallets.find(params[:wallet_id]) rescue nil
+      @wallets = current_user.wallets
+    end
+
     # Only allow a list of trusted parameters through.
     def bank_account_params
-      params.require(:bank_account).permit(:balance, :name, :description)
+      params.require(:bank_account).permit(:balance, :name, :description, :wallet_id)
     end
 end
