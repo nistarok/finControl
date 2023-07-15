@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Statements</h1>
+
+<div id="bank_statements">
+  <% @bank_statements.each do |bank_statement| %>
+    <%= render bank_statement %>
+    <p>
+      <%= link_to "Show this statement", bank_statement %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New statement", new_bank_statement_path %>

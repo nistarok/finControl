@@ -1,0 +1,24 @@
+<% if @statement.present? %>
+  <div id="accounts">
+    <table class="table table-borderless">
+      <thead>
+        <tr>
+          <th scope="col"><%= t('transaction') %></th>
+          <th scope="col"><%= t('name') %></th>
+          <th scope="col"><%= t('value') %></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @statement.transactions.each do |statement| %>
+          <tr id="<%= dom_id statement %>">
+            <td scope="row"><%=link_to  account.name, account, class: "link-opacity-10-hover" %></th>
+            <td><%= account.description %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+<% end %>
+<div>
+  <%= button_to t('new_account'), new_bank_account_path(), method: :get, params: {wallet_id: @wallet.id}, class: "btn btn-primary" %>
+</div>

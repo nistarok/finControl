@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  wallet: one
+  closed: false
+  closing_value: 
+  closing_reference: 2023-07-15
+
+two:
+  wallet: two
+  closed: false
+  closing_value: 
+  closing_reference: 2023-07-15
