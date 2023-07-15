@@ -6,7 +6,8 @@ Rails.application.routes.draw do
   }
   resources :origins
   namespace :bank do
-    resources :transitions
+    resources :transactions
+    resources :statements
     resources :accounts
   end
 

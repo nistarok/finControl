@@ -39,6 +39,7 @@ class WalletsController < ApplicationController
   end
 
   def show
+    @statement = @wallet.open_bank_statement
     @accounts = @wallet.bank_accounts
   end
 

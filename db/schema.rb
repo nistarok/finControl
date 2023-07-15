@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_15_181107) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_15_195906) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -22,6 +22,27 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_15_181107) do
     t.datetime "updated_at", null: false
     t.bigint "wallet_id"
     t.index ["wallet_id"], name: "index_bank_accounts_on_wallet_id"
+  end
+
+  create_table "bank_statements", force: :cascade do |t|
+    t.bigint "wallet_id", null: false
+    t.boolean "closed", default: false
+    t.bigint "closing_value"
+    t.date "closing_reference"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["wallet_id"], name: "index_bank_statements_on_wallet_id"
+  end
+
+  create_table "bank_transactions", force: :cascade do |t|
+    t.string "name"
+    t.bigint "value"
+    t.string "display_name"
+    t.string "tags"
+    t.bigint "statements_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["statements_id"], name: "index_bank_transactions_on_statements_id"
   end
 
   create_table "bank_transitions", force: :cascade do |t|
@@ -83,6 +104,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_15_181107) do
   end
 
   add_foreign_key "bank_accounts", "wallets"
+  add_foreign_key "bank_statements", "wallets"
   add_foreign_key "bank_transitions", "origins"
   add_foreign_key "user_wallets", "users"
   add_foreign_key "user_wallets", "wallets"
