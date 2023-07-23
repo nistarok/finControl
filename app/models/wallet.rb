@@ -3,6 +3,7 @@ class Wallet < ApplicationRecord
   has_many :users, through: :user_wallets
   has_many :bank_accounts, class_name: "Bank::Account"
   has_many :bank_statements, class_name: "Bank::Statement"
+  has_many :bank_transactions, class_name: "Bank::Transaction"
   accepts_nested_attributes_for :user_wallets
 
   after_commit :set_first_statement

@@ -8,6 +8,8 @@
     <%= f.input :value %>
     <%= f.input :display_name %>
     <%= f.input :tags %>
+    <%= f.hidden_field :statement_id, value: @statement.id %>
+
   </div>
 
   <div class="form-actions">

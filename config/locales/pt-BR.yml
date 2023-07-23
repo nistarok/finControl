@@ -42,5 +42,6 @@ pt-br:
   name: "Nome"
   initial_balance: "Saldo inicial"
   save_account: 'Salvar conta'
+  transactions: "Lançamentos"
 
 

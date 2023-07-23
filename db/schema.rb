@@ -39,10 +39,11 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_15_195906) do
     t.bigint "value"
     t.string "display_name"
     t.string "tags"
-    t.bigint "statements_id"
+    t.date "operation_date"
+    t.bigint "statement_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["statements_id"], name: "index_bank_transactions_on_statements_id"
+    t.index ["statement_id"], name: "index_bank_transactions_on_statement_id"
   end
 
   create_table "bank_transitions", force: :cascade do |t|

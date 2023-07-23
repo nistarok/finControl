@@ -20,5 +20,5 @@
   </div>
 <% end %>
 <div>
-  <%= button_to t('new_account'), new_bank_account_path(), method: :get, params: {wallet_id: @wallet.id}, class: "btn btn-primary" %>
+  <%= button_to t('transactions'), bank_transactions_path(), method: :get, params: {wallet_id: @wallet.id}, class: "btn btn-primary" %>
 </div>

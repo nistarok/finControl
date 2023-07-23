@@ -5,7 +5,8 @@ class CreateBankTransactions < ActiveRecord::Migration[7.0]
       t.bigint :value
       t.string :display_name
       t.string :tags
-      t.references :statements
+      t.date :operation_date
+      t.references :statement
 
       t.timestamps
     end

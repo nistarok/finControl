@@ -1,9 +1,13 @@
 class Bank::TransactionsController < ApplicationController
   before_action :set_bank_transaction, only: %i[ show edit update destroy ]
+  before_action :authenticate_user!
 
   # GET /bank/transactions or /bank/transactions.json
   def index
-    @bank_transactions = Bank::Transaction.all
+    @statement = current_user.wallets.find(params[:wallet_id]).open_bank_statement
+    @bank_transactions = @statement.transactions #Bank::Transaction.all
+    @bank_transaction = Bank::Transaction.new
+
   end
 
   # GET /bank/transactions/1 or /bank/transactions/1.json
@@ -22,6 +26,7 @@ class Bank::TransactionsController < ApplicationController
   # POST /bank/transactions or /bank/transactions.json
   def create
     @bank_transaction = Bank::Transaction.new(bank_transaction_params)
+
 
     respond_to do |format|
       if @bank_transaction.save
@@ -65,6 +70,8 @@ class Bank::TransactionsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def bank_transaction_params
-      params.require(:bank_transaction).permit(:name, :value, :display_name, :tags)
+
+      params[:bank_transaction][:value] = params[:bank_transaction][:value].to_f*100
+      params.require(:bank_transaction).permit(:name, :value, :display_name, :tags, :statement_id)
     end
 end
