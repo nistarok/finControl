@@ -1,24 +1,11 @@
 # README
+Sistema para controle financeiro pessoal. Usado para estudar rails 7 e TurboStream.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Para iniciar, criar usuário, criar carteira e contas da carteira. Depois é só ir lançando os gastos/ganhos para a carteira. 
 
-Things you may want to cover:
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+# TODO
+- Lançamentos
+- Fechamentos de ciclo
+- Relatórios de gastos por origem
+- Visual (Sempre)
