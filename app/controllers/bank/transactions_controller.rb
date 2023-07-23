@@ -26,17 +26,17 @@ class Bank::TransactionsController < ApplicationController
   # POST /bank/transactions or /bank/transactions.json
   def create
     @bank_transaction = Bank::Transaction.new(bank_transaction_params)
+    @bank_transaction.save
 
-
-    respond_to do |format|
-      if @bank_transaction.save
-        format.html { redirect_to bank_transaction_url(@bank_transaction), notice: "Transaction was successfully created." }
-        format.json { render :show, status: :created, location: @bank_transaction }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @bank_transaction.errors, status: :unprocessable_entity }
-      end
-    end
+    # respond_to do |format|
+    #   if @bank_transaction.save
+    #     format.html { redirect_to bank_transactions_url(wallet_id: @bank_transaction.statement.wallet_id), notice: "Transaction was successfully created." }
+    #     format.json { render :show, status: :created, location: @bank_transaction }
+    #   else
+    #     format.html { render :new, status: :unprocessable_entity }
+    #     format.json { render json: @bank_transaction.errors, status: :unprocessable_entity }
+    #   end
+    # end
   end
 
   # PATCH/PUT /bank/transactions/1 or /bank/transactions/1.json

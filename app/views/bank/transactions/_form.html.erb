@@ -1,18 +1,22 @@
 
-<%= simple_form_for(@bank_transaction) do |f| %>
-  <%= f.error_notification %>
+<%= form_with model: @bank_transaction, remote: true do |f| %>
+  <%
+=begin%>
+ <%= f.error_notification %>
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+<%
+=end%>
 
   <div class="form-inputs">
-    <%= f.input :name %>
-    <%= f.input :value %>
-    <%= f.input :display_name %>
-    <%= f.input :tags %>
+    <%= f.text_field :name %>
+    <%= f.text_field :value %>
+    <%= f.text_field :display_name %>
+    <%= f.text_field :tags %>
     <%= f.hidden_field :statement_id, value: @statement.id %>
 
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit %>
+    <%= f.button :submit, style: 'display: block' %>
   </div>
 <% end %>

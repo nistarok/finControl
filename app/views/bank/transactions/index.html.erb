@@ -4,17 +4,12 @@
 
 <%= render "form" %>
 
-<div id="bank_transactions">
-  <% @bank_transactions.each do |bank_transaction| %>
-    <%= render bank_transaction %>
-    <p>
-      <%= link_to "Show this transaction", bank_transaction %>
-    </p>
-  <% end %>
-</div>
 
-<%
-=begin%>
- <%= link_to "New transaction", new_bank_transaction_path %>
-<%
-=end%>
+<% if @statement %>
+  <%= turbo_stream_from @statement %>
+  <div id='bank_transactions'>
+    <% @bank_transactions.each do |bank_transaction| %>
+      <%= render bank_transaction %>
+    <% end %>
+  </div>
+<% end %>
