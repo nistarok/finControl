@@ -3,8 +3,8 @@ class Bank::Transaction < ApplicationRecord
 
   # broadcasts_to -> (transaction) {'transaction_list'}
   after_create_commit { broadcast_append_to statement }
-  after_update_commit { broadcast_append_to "transaction_list" }
-  after_destroy_commit { broadcast_remove_to "transaction_list" }
+  after_update_commit { broadcast_append_to statement }
+  after_destroy_commit { broadcast_remove_to statement }
 
 
   # after_update_commit do
