@@ -6,6 +6,7 @@ class Bank::Transaction < ApplicationRecord
   after_update_commit { broadcast_append_to statement }
   after_destroy_commit { broadcast_remove_to statement }
 
+  validates_presence_of :name
 
   # after_update_commit do
   #   broadcast_replace_to('transaction_list', target: self, partial: "bank/transactions/transaction", locals: { transaction: self })

@@ -33,6 +33,17 @@ en:
   hello: "Hello %{name}"
   wallets: "Wallets"
   wallet: "Wallet"
-  created_at: "Criado em"
-
+  back_wallet: "Back to wallet"
+  created_at: "Created at"
+  first_wallet_name: "Create your wallet"
+  new_account:  "New account"
+  account: "account"
+  description: "Decription"
+  name: "Name"
+  initial_balance: "Initial balance"
+  save_account: 'Save account'
+  transactions: "Transactions"
+  value: "Value"
+  display_name: "Display name"
+  tags: "Tags"
 

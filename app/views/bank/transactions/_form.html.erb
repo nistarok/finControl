@@ -1,22 +1,12 @@
-
-<%= form_with model: @bank_transaction, remote: true do |f| %>
-  <%
-=begin%>
- <%= f.error_notification %>
-  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
-<%
-=end%>
-
-  <div class="form-inputs">
-    <%= f.text_field :name %>
-    <%= f.text_field :value %>
-    <%= f.text_field :display_name %>
-    <%= f.text_field :tags %>
+<%= form_with model: @bank_transaction, remote: true, :class => "form-inline", data: {controller: "hello",  action: "submit-end->reset-form#reset"} do |f| %>
+  <div class="row">
+    <%= f.text_field :name, required: true, class: "col form-control", placeholder: t('name') %>
+    <%= f.number_field :value, required: true, class: "col form-control", placeholder: t('value') %>
+    <%= f.text_field :display_name, class: "col form-control", placeholder: t('display_name') %>
+    <%= f.text_field :tags, class: "col form-control", placeholder: t('tags') %>
     <%= f.hidden_field :statement_id, value: @statement.id %>
 
   </div>
 
-  <div class="form-actions">
-    <%= f.button :submit, style: 'display: block' %>
-  </div>
 <% end %>
+

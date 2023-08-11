@@ -43,5 +43,8 @@ pt-br:
   initial_balance: "Saldo inicial"
   save_account: 'Salvar conta'
   transactions: "Lançamentos"
+  value: "Valor"
+  display_name: "Nome de exibição"
+  tags: "Tags"
 
 
