@@ -6,10 +6,23 @@
 
 
 <% if @statement %>
-  <%= turbo_stream_from @statement %>
-  <div id='bank_transactions'>
-    <% @bank_transactions.each do |bank_transaction| %>
-      <%= render bank_transaction %>
-    <% end %>
-  </div>
+
+  <table class="table table-borderless">
+    <thead>
+      <tr>
+        <th scope="col"><%= t('Name') %></th>
+        <th scope="col"><%= t('Value') %></th>
+        <th scope="col"><%= t('display_name') %></th>
+        <th scope="col"><%= t('Tags') %></th>
+      </tr>
+    </thead>
+    <%= turbo_stream_from @statement %>
+    <tbody id='bank_transactions'>
+      <tr >
+        <% @bank_transactions.each do |bank_transaction| %>
+          <%= render bank_transaction %>
+        <% end %>
+      </div>
+    </tbody>
+  </table>
 <% end %>

@@ -1,3 +1,12 @@
+<tr id="<%= dom_id transaction %>">
+  <td scope="row"><%= transaction.name %></th>
+  <td scope="row"><%= transaction.value %></th>
+  <td scope="row"><%= transaction.display_name %></th>
+  <td scope="row"><%= transaction.tags %></th>
+</tr>
+<%
+=begin%>
+
 <div id="<%= dom_id transaction %>">
   <p>
     <strong>Name:</strong>
@@ -20,3 +29,5 @@
   </p>
 
 </div>
+<%
+=end%>
