@@ -9,6 +9,7 @@ export default class extends Controller {
   }
 
   reset() {
+    console.log('AUhDIOAUhiu')
     this.element.reset();
   }
 }

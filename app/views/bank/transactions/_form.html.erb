@@ -1,12 +1,12 @@
-<%= form_with model: @bank_transaction, remote: true, :class => "form-inline", data: {controller: "hello",  action: "submit-end->reset-form#reset"} do |f| %>
+<%= form_with model: @bank_transaction, :class => "form-inline", data: {controller: "reset-form", turbo: true, action: "turbo:submit-start->reset-form#reset"} do |f| %>
   <div class="row">
     <%= f.text_field :name, required: true, class: "col form-control", placeholder: t('name') %>
     <%= f.number_field :value, required: true, class: "col form-control", placeholder: t('value') %>
     <%= f.text_field :display_name, class: "col form-control", placeholder: t('display_name') %>
     <%= f.text_field :tags, class: "col form-control", placeholder: t('tags') %>
     <%= f.hidden_field :statement_id, value: @statement.id %>
+    <input type="submit" id="Scomit" style="display:none">
 
   </div>
 
 <% end %>
-
